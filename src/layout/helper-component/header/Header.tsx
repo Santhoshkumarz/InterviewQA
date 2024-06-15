@@ -4,7 +4,7 @@ import { NavbarWarrper } from './Header.styled'
 const Header = () => {
   return (
     <div>
-        <NavbarWarrper>Header</NavbarWarrper>
+        <NavbarWarrper>Index Header</NavbarWarrper>
     </div>
   )
 }

@@ -6,7 +6,7 @@ import Footer from "./helper-component/footer/Footer";
 type LayoutProps = {
   children: ReactNode;
 };
-const DashboardLayout = ({ children }: LayoutProps) => {
+const HomeLayout = ({ children }: LayoutProps) => {
   return (
     <div>
       <Header />
@@ -16,4 +16,4 @@ const DashboardLayout = ({ children }: LayoutProps) => {
   );
 };
 
-export default DashboardLayout;
+export default HomeLayout;
