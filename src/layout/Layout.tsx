@@ -1,19 +1,18 @@
 "use client"
 import { ReactNode } from "react";
-import Header from "./helper-component/header/Header";
-import Footer from "./helper-component/footer/Footer";
+import Header from "./header/Header";
 
 type LayoutProps = {
   children: ReactNode;
 };
-const HomeLayout = ({ children }: LayoutProps) => {
+const HomePageLayout = ({ children }: LayoutProps) => {
   return (
     <div>
       <Header />
         {children}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
 
-export default HomeLayout;
+export default HomePageLayout;
