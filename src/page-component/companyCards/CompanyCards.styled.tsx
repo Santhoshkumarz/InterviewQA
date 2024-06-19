@@ -7,22 +7,26 @@ export const CompanyCardsWrapper = styled(Box)`
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  padding-top:30px;
+  padding-top: 30px;
 `;
 
 export const CompanyCard = styled(Box)`
   width: 23%;
-  height: 150px;
+  height: auto;
   border-radius: 6px;
   margin: 10px;
-  padding: 20px 20px;
+  padding: 20px;
   cursor: pointer;
   background-color: ${theme.colors.white};
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
-   &:hover {
+  &:hover {
     box-shadow: rgba(0, 0, 0, 0.32) 0px 3px 10px;
   }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const TitleStyled = styled(Typography)`
@@ -39,4 +43,18 @@ export const SubTitleStyled = styled(Typography)`
   text-align: center;
   font-weight: 200;
   padding-top: 20px;
+`;
+
+export const CompanyNameStyled = styled(Typography)`
+  color: ${theme.colors.navy};
+  font-size: 20px;
+  text-align: center;
+  font-weight: 550;
+  padding-top: 20px;
+`;
+
+export const ImageStyled = styled("img")`
+  width: 110px;
+  display: block;
+  margin: auto;
 `;
