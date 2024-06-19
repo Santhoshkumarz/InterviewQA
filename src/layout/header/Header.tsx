@@ -1,8 +1,9 @@
 import React from "react";
-import { HeaderWraper, HeaderContent, MenuContainer, LinkStyled } from "./Header.styled";
+import { HeaderContent, MenuContainer, LinkStyled, Title, HeaderWrapper } from "./Header.styled";
 import { headerMenus } from "@/config/header";
 import Link from "next/link";
 
+const InterviewTitle="InterviewQA"
 const renderMenus = () => {
   return headerMenus?.map((menu, index) => {
     return (
@@ -13,16 +14,16 @@ const renderMenus = () => {
   });
 };
 
-const Header = () => {
+const Header = ({scrollDirection}:any) => {
   return (
-    <HeaderWraper>
+    <HeaderWrapper scrollDirection={scrollDirection}>
       <HeaderContent>
-        <h1>InterviewQA</h1>
+        <Title variant="h3">{InterviewTitle}</Title>
       </HeaderContent>
       <MenuContainer>
         {renderMenus()}
       </MenuContainer>
-    </HeaderWraper>
+    </HeaderWrapper>
   );
 };
 
