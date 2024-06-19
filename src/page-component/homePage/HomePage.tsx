@@ -1,16 +1,13 @@
 "use client";
 import React from "react";
-import { Warpper, ImageStyled } from "./HomePage.styled";
-
-import Image from "next/image";
+import CompanyReviewComponent from "../companyCards/CompanyCards";
+import LandingPage from "./helper-component/companySeletedBox/CompanySelected";
 
 const HomePage = () => {
-  
-
   return (
     <>
-
-
+      <LandingPage />
+      <CompanyReviewComponent />
     </>
   );
 };
