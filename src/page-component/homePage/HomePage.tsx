@@ -1,12 +1,17 @@
+"use client";
 import React from "react";
-import ReviewsPage from "../reviews/Reviews";
+import { Warpper, ImageStyled } from "./HomePage.styled";
+
+import Image from "next/image";
 
 const HomePage = () => {
+  
+
   return (
-    <div>
-      <h1>HomePage</h1>
-      <ReviewsPage />
-    </div>
+    <>
+
+
+    </>
   );
 };
 
