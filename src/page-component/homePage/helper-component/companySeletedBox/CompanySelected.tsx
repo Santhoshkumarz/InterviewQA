@@ -5,11 +5,13 @@ import { Company, SelectedBoxProps } from "./types";
 import {
   SearchSelectedContainer,
   CustomTextField,
-  Warpper,
+
   ImageStyled,
-  ContentWarrper,
+
   TypographyStyled,
   SubHeading,
+  ContentWrapper,
+  Wrapper,
 } from "./CompanySelected.styled";
 
 const title = "Every Review is an Experience!";
@@ -53,17 +55,17 @@ const LandingPage: React.FC = () => {
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
 
   return (
-    <Warpper>
+    <Wrapper>
       <ImageStyled src="/image/homepage.png" alt="Home Page Image" />
-      <ContentWarrper>
+      <ContentWrapper>
         <TypographyStyled variant="h2">{title}</TypographyStyled>
         <SubHeading variant="h5">{subTitle}</SubHeading>
         <SelectedBox
           selectedCompany={selectedCompany}
           setSelectedCompany={setSelectedCompany}
         />
-      </ContentWarrper>
-    </Warpper>
+      </ContentWrapper>
+    </Wrapper>
   );
 };
 
