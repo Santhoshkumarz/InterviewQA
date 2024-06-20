@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { Autocomplete } from "@mui/material";
 import { companiesNames } from "@/config/companyNames";
@@ -16,11 +15,12 @@ import {
 const title = "Every Review is an Experience!";
 const subTitle = "Check questions of the company and read Reviews";
 
-
 const SelectedBox: React.FC<SelectedBoxProps> = ({
   selectedCompany,
   setSelectedCompany,
 }) => {
+  const [isInputFocused, setIsInputFocused] = useState(false);
+
   return (
     <SearchSelectedContainer>
       <Autocomplete
@@ -28,10 +28,14 @@ const SelectedBox: React.FC<SelectedBoxProps> = ({
         getOptionLabel={(option) => option.name}
         value={selectedCompany}
         onChange={(event, newValue) => setSelectedCompany(newValue)}
+        onFocus={() => setIsInputFocused(true)}
+        onBlur={() => setIsInputFocused(false)}
         renderInput={(params) => (
           <CustomTextField
             {...params}
-            label={!selectedCompany ? "Select a company" : ""}
+            label={
+              !selectedCompany && !isInputFocused ? "Select a company" : ""
+            }
             variant="outlined"
             fullWidth
             InputLabelProps={{
