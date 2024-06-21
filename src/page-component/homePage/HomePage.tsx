@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-import CompanyReviewComponent from "../companyCards/CompanyCards";
+
 import LandingPage from "./helper-component/companySeletedBox/CompanySelected";
+import CompanyReviewComponent from "./helper-component/companyCards/CompanyCards";
 
 const HomePage = () => {
   return (
