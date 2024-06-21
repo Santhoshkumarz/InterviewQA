@@ -26,7 +26,7 @@ export const HeaderWraper = styled.div<CustomProps>`
     pathName === "/"
       ? hasBgColor
         ? theme.colors.black
-        : "rgba(0, 0, 0, 0.28)"
+        : 'none'
       : theme.colors.black};
   ${breakpoints.xs} {
     padding: 0;
