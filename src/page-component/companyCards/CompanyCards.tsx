@@ -7,6 +7,7 @@ import {
   SubTitleStyled,
   CompanyNameStyled,
   ImageStyled,
+  PaginationStyled,
 } from "./CompanyCards.styled";
 import { companiesNames } from "@/config/companyNames";
 
@@ -21,18 +22,35 @@ const renderTitle = () => {
     </Fragment>
   );
 };
+
 const CompanyReviewComponent = () => {
+  const [page, setPage] = React.useState(1);
+  const itemsPerPage = 8;
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+
+  const startIndex = (page - 1) * itemsPerPage;
+  const selectedCompanies = companiesNames.slice(startIndex, startIndex + itemsPerPage);
+
   return (
     <Fragment>
       {renderTitle()}
       <CompanyCardsWrapper className="layout-gap">
-        {companiesNames.map((companyName, index) => (
+        {selectedCompanies.map((companyName, index) => (
           <CompanyCard key={index}>
             <ImageStyled src={companyName.logo} alt="No logo" />
             <CompanyNameStyled>{companyName.name}</CompanyNameStyled>
           </CompanyCard>
         ))}
       </CompanyCardsWrapper>
+      <PaginationStyled
+        count={Math.ceil(companiesNames.length / itemsPerPage)}
+        page={page}
+        onChange={handleChange}
+        color='standard'
+        className="layout-gap"
+      />
     </Fragment>
   );
 };

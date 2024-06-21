@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Pagination } from "@mui/material";
 import styled from "styled-components";
 import { theme } from "../../../themes/theme";
 import breakpoints from "../../../themes/breakpoints";
@@ -7,9 +7,8 @@ export const CompanyCardsWrapper = styled(Box)`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-   justify-content: center;
+  justify-content: center;
   padding-top: 30px;
-
 `;
 
 export const CompanyCard = styled(Box)`
@@ -68,12 +67,32 @@ export const CompanyNameStyled = styled(Typography)`
   color: ${theme.colors.navy};
   font-size: 20px;
   text-align: center;
-  font-weight: 550;
+
   padding-top: 20px;
+  ${breakpoints.xs} {
+    font-size: 12px;
+    font-weight: 560;
+  }
+  ${breakpoints.md} {
+    font-size: 16px;
+  }
+  ${breakpoints.lg} {
+  font-size: 19px;
+  }
 `;
 
 export const ImageStyled = styled("img")`
   width: 110px;
   display: block;
   margin: auto;
+`;
+
+export const PaginationStyled = styled(Pagination)`
+  display: flex;
+  justify-content: end;
+  padding-top: 30px;
+
+  .MuiPaginationItem-root {
+    font-size: 19px;
+  }
 `;
