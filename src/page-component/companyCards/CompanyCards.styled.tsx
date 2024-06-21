@@ -1,17 +1,18 @@
 import { Box, Typography } from "@mui/material";
 import styled from "styled-components";
 import { theme } from "../../../themes/theme";
+import breakpoints from "../../../themes/breakpoints";
 
 export const CompanyCardsWrapper = styled(Box)`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+   justify-content: center;
   padding-top: 30px;
+
 `;
 
 export const CompanyCard = styled(Box)`
-  width: 23%;
   height: auto;
   border-radius: 6px;
   margin: 10px;
@@ -27,6 +28,18 @@ export const CompanyCard = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  ${breakpoints.xs} {
+    width: 100%;
+  }
+  ${breakpoints.md} {
+    width: 30%;
+  }
+  ${breakpoints.lg} {
+    width: 31%;
+  }
+  ${breakpoints.xl} {
+    width: 23%;
+  }
 `;
 
 export const TitleStyled = styled(Typography)`
@@ -35,14 +48,20 @@ export const TitleStyled = styled(Typography)`
   text-align: center;
   font-weight: 600;
   padding-top: 50px;
+  ${breakpoints.xs} {
+    font-size: 28px;
+    font-weight: 600;
+  }
 `;
 
 export const SubTitleStyled = styled(Typography)`
   color: ${theme.colors.dark};
-  font-size: 20px;
   text-align: center;
   font-weight: 200;
   padding-top: 20px;
+  ${breakpoints.xs} {
+    font-size: 19px;
+  }
 `;
 
 export const CompanyNameStyled = styled(Typography)`
