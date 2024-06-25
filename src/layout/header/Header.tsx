@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   HeaderContent,
   MenuContainer,
@@ -8,10 +8,13 @@ import {
   MenuIcon,
   MobileMenuContainer,
   MobileMenuItem,
+  AvatarContainer,
+  AvatarIcon,
+  AvatarMenu,
+  AvatarMenuItem,
 } from "./Header.styled";
 import { headerMenus } from "@/config/header";
 import { usePathname } from "next/navigation";
-
 const InterviewTitle = "InterviewQA";
 
 interface MenuProps {
@@ -33,9 +36,15 @@ const Header = () => {
   const [isMobile, setMobile] = useState(false);
   const [scrollDirection, setScrollDirection] = useState("up");
   const [hasBgColor, setHasBgColor] = useState(false);
+  const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
+  const avatarMenuRef = useRef<HTMLDivElement>(null);
 
   const toggleBar = () => {
     setMobile(!isMobile);
+  };
+
+  const toggleAvatarMenu = () => {
+    setIsAvatarMenuOpen(!isAvatarMenuOpen);
   };
 
   useEffect(() => {
@@ -62,13 +71,41 @@ const Header = () => {
     };
   }, [pathName]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        avatarMenuRef.current &&
+        !avatarMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsAvatarMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <HeaderWraper pathName={pathName} hasBgColor={hasBgColor}>
         <HeaderContent>
           <Title variant="h3">{InterviewTitle}</Title>
         </HeaderContent>
-        <MenuContainer>{!isMobile && renderMenus({ isMobile })}</MenuContainer>
+        <MenuContainer>
+          {!isMobile && renderMenus({ isMobile })}
+          <AvatarContainer ref={avatarMenuRef}>
+            <AvatarIcon onClick={toggleAvatarMenu} /> {/* Avatar Icon */}
+            {isAvatarMenuOpen && (
+              <AvatarMenu>
+                <AvatarMenuItem href="/sign-In">Log In</AvatarMenuItem>
+                <AvatarMenuItem href="/sign-Up">Sign Up</AvatarMenuItem>
+                <AvatarMenuItem href="#">Logout</AvatarMenuItem>
+              </AvatarMenu>
+            )}
+          </AvatarContainer>
+        </MenuContainer>
         <MenuIcon onClick={toggleBar} />
       </HeaderWraper>
       {isMobile && (

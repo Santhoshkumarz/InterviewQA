@@ -5,14 +5,13 @@ import { Company, SelectedBoxProps } from "./types";
 import {
   SearchSelectedContainer,
   CustomTextField,
-
   ImageStyled,
-
   TypographyStyled,
   SubHeading,
   ContentWrapper,
   Wrapper,
-} from "./CompanySelected.styled";
+} from "./LandingPage.styled";
+import { useRouter } from "next/navigation";
 
 const title = "Every Review is an Experience!";
 const subTitle = "Check questions of the company and read Reviews";
@@ -22,6 +21,7 @@ const SelectedBox: React.FC<SelectedBoxProps> = ({
   setSelectedCompany,
 }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
+  const router = useRouter();
 
   return (
     <SearchSelectedContainer>
@@ -29,7 +29,14 @@ const SelectedBox: React.FC<SelectedBoxProps> = ({
         options={companiesNames}
         getOptionLabel={(option) => option.name}
         value={selectedCompany}
-        onChange={(event, newValue) => setSelectedCompany(newValue)}
+        onChange={(event, newValue) => {
+          setSelectedCompany(newValue);
+          console.log('newValue',newValue);
+          
+          if (newValue) {
+            router.push(`/interview-company/${newValue.pathName}`);
+          }
+        }}
         onFocus={() => setIsInputFocused(true)}
         onBlur={() => setIsInputFocused(false)}
         renderInput={(params) => (
