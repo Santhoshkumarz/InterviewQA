@@ -1,5 +1,6 @@
 
 export interface Company {
+    pathName: any;
     name: string;
   }
   

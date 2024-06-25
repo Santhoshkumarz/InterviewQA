@@ -3,6 +3,8 @@ import { theme } from "../../../themes/theme";
 import breakpoints from "../../../themes/breakpoints";
 import { Typography } from "@mui/material";
 import DehazeOutlinedIcon from "@mui/icons-material/DehazeOutlined";
+import Link from "next/link";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 interface CustomProps {
   isMobile?: boolean;
@@ -17,7 +19,7 @@ export const HeaderWraper = styled.div<CustomProps>`
   color: ${theme.colors.white};
   z-index: 50;
   width: 100%;
-  height: 65px;
+  height: 55px;
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +28,7 @@ export const HeaderWraper = styled.div<CustomProps>`
     pathName === "/"
       ? hasBgColor
         ? theme.colors.black
-        : 'none'
+        : "none"
       : theme.colors.black};
   ${breakpoints.xs} {
     padding: 0;
@@ -41,7 +43,7 @@ export const HeaderWraper = styled.div<CustomProps>`
     height: 47px;
   }
   ${breakpoints.xl} {
-    height: 75px;
+    height: 65px;
   }
 `;
 
@@ -101,11 +103,10 @@ export const MobileMenuItem = styled.div<{ isMobile: boolean }>`
   }
 `;
 
-export const LinkStyled = styled.a<{ href: string; isMobile: boolean }>`
+export const LinkStyled = styled(Link)<{ href: string; isMobile: boolean }>`
   color: ${({ isMobile }) =>
     isMobile ? theme.colors.black : theme.colors.white};
   text-decoration: none;
-  position: relative;
   transition: color 0.3s, text-decoration 0.3s;
   &:hover {
     color: ${theme.colors.green};
@@ -148,5 +149,49 @@ export const MenuIcon = styled(DehazeOutlinedIcon)`
   }
   ${breakpoints.md} {
     display: none;
+  }
+`;
+
+export const AvatarContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+export const AvatarIcon = styled(AccountCircleIcon)`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: ${theme.colors.dark};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const AvatarMenu = styled.div`
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 120px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+`;
+
+export const AvatarMenuItem = styled(Link)<{ href: string }>`
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+
+  &:hover {
+    background-color: ${theme.colors.green};
+    color: white;
   }
 `;
